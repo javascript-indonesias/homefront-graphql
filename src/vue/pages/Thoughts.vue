@@ -44,23 +44,34 @@ section {
 div
 	home-header(:show="header")
 	transition(name="fade")
-		section(v-if="loading")
+		section(v-if="loading > 0")
 			loading
 	transition-group(name="slide", tag="article")
 		.title(
-			v-for="(thought, key, index) in thoughts",
-			:key="key",
+			v-for="(thought, index) in thoughts",
+			:key="index",
 			:style="{ transitionDelay: (index * 0.15) + 's' }")
 			.separator(v-if="index > 0") ———
 			h3
-				router-link(:to="{ name: 'thought', params: { slug: key } }") {{ thought.title }}
-			em {{ format(thought.published_at) }}
+				router-link(:to="{ name: 'thought', params: { slug: thought.slug } }") {{ thought.title }}
+			em {{ format(thought.published) }}
 </template>
 
 <script>
+import gql from 'graphql-tag'
 import format from 'date-fns/format'
 import loading from 'js/mixins/loading'
 import HomeHeader from 'vue/partials/HomeHeader'
+
+const thoughts = gql`
+	query {
+		thoughts: allPosts(orderBy: published_DESC) {
+			title
+			slug
+			published
+		}
+	}
+`
 
 export default {
 	name: 'Thoughts',
@@ -69,6 +80,7 @@ export default {
 
 	data () {
 		return {
+			loading: 0,
 			thoughts: [],
 			header: false,
 			pagination: {
@@ -78,9 +90,15 @@ export default {
 		}
 	},
 
+	apollo: {
+		thoughts: {
+			query: thoughts,
+			loadingKey: 'loading'
+		}
+	},
+
 	mounted () {
 		this.header = true
-		this.fetch()
 	},
 
 	beforeRouteLeave (to, from, next) {
@@ -93,9 +111,6 @@ export default {
 	},
 
 	methods: {
-		fetch () {
-			this.loading = true
-		},
 		format (date) {
 			return format(date, 'MMMM, Do YYYY')
 		}

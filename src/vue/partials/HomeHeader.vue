@@ -19,9 +19,9 @@ a {
 </style>
 
 <template lang="pug">
-	header(:class="{ '-show': show }")
-		router-link(:to="{ name: 'home' }"): logo
-		home-menu
+header(:class="{ '-show': show }")
+	router-link(:to="{ name: 'home' }"): logo
+	home-menu
 </template>
 
 <script>
