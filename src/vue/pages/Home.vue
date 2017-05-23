@@ -146,11 +146,11 @@ a {
 <template lang="pug">
 .wrapper(:class="{ 'mounted': mounted }")
 	.bottom
-		router-link.link(:to="{ name: 'thoughts' }", v-if="thoughts", style="transition-delay: 0.3s") Thoughts
+		router-link.link(:to="{ name: 'thoughts' }", v-if="thoughts.count", style="transition-delay: 0.3s") Thoughts
 		a.link(href="https://drive.google.com/open?id=0Bw0IWO_QJRzSMHBEZXVJQmpPbkk", style="transition-delay: 0.2s") Resume
 		a.link(href="https://github.com/naidraikzir", style="transition-delay: 0.1s") Github
 		a.link(href="https://www.linkedin.com/in/rizkiardian/", style="transition-delay: 0s") LinkedIn
-	router-link.link.projects(:to="{ name: 'projects' }", v-if="projects")
+	router-link.link.projects(:to="{ name: 'projects' }", v-if="projects.count")
 		span
 		| Projects
 
@@ -158,9 +158,9 @@ a {
 		.greet(v-if="mounted")
 			mark-view(:content="greet")
 			.contact
-				a(:href="`tel:+${Contact.phone.replace(/ /g, '')}`", v-if="Contact.phone") P — {{ Contact.phone }}
+				a(:href="`tel:+${contact.phone.replace(/ /g, '')}`", v-if="contact.phone") P — {{ contact.phone }}
 				br
-				a(:href="`mailto:${Contact.email}`", v-if="Contact.email") E — {{ Contact.email }}
+				a(:href="`mailto:${contact.email}`", v-if="contact.email") E — {{ contact.email }}
 </template>
 
 <script>
@@ -169,9 +169,29 @@ import MarkView from 'vue/components/MarkView'
 
 const contact = gql`
 	query {
-		Contact(id: "cj30zdvrc42os0133uod22dcf") {
+		contact: Contact(id: "cj30zdvrc42os0133uod22dcf") {
 			email
 			phone
+		}
+	}
+`
+
+const thoughts = gql`
+	query {
+		thoughts: _allPostsMeta(filter: {
+			type: "thought"
+		}) {
+			count
+		}
+	}
+`
+
+const projects = gql`
+	query {
+		projects: _allPostsMeta(filter: {
+			type: "project"
+		}) {
+			count
 		}
 	}
 `
@@ -184,29 +204,33 @@ export default {
 		return {
 			mounted: false,
 			greet: null,
-			Contact: {
+			contact: {
 				email: null,
 				phone: null,
 			},
-			thoughts: false,
-			projects: false
+			thoughts: {
+				count: null
+			},
+			projects: {
+				count: null
+			}
 		}
 	},
 
 	apollo: {
-		Contact: {
+		contact: {
 			query: contact
 		},
+		thoughts: {
+			query: thoughts
+		},
+		projects: {
+			query: projects
+		}
 	},
 
 	created () {
-		let greet = this.fetch()
-		Promise.all([
-			greet,
-		]).then(() => {
-			this.fetchCounts()
-			this.mounted = true
-		})
+		this.fetch()
 	},
 
 	beforeRouteLeave (to, from, next) {
@@ -224,15 +248,12 @@ export default {
 					.then(response => {
 						setTimeout(() => {
 							this.greet = response.data
+							this.mounted = true
 							resolve()
 						}, 300)
 					})
 			})
 		},
-		fetchContact () {
-		},
-		fetchCounts () {
-		}
 	}
 }
 </script>

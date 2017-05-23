@@ -29,5 +29,3 @@ window.app = new Vue({
 	apolloProvider,
 	render: h => h(App)
 }).$mount('#app')
-
-console.log(window.app)
