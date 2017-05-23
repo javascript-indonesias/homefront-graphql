@@ -45,12 +45,12 @@ section {
 div
 	home-header(:show="header")
 	transition(name="fade")
-		section(v-if="loading")
+		section(v-if="loading > 0")
 			loading
 	transition(name="slide-up")
-		article.head(v-if="meta")
-			h2 {{ meta.title }}
-			em {{ format(meta.published_at) }}
+		article.head(v-if="content")
+			h2 {{ thought.title }}
+			em {{ format(thought.published) }}
 	transition(name="slide-down")
 		article(v-if="content")
 			mark-view(:content="content")
@@ -63,6 +63,7 @@ div
 </template>
 
 <script>
+import gql from 'graphql-tag'
 import format from 'date-fns/format'
 import loading from 'js/mixins/loading'
 import Logo from 'vue/components/Logo'
@@ -78,20 +79,46 @@ export default {
 	data () {
 		return {
 			header: false,
-			meta: null,
+			thought: null,
 			content: null,
 			url: window.location.href
 		}
 	},
 
+	apollo: {
+		thought () {
+			return {
+				query: gql`
+					query Post ($slug: String!) {
+						thought: Post(slug: $slug) {
+							title
+							published
+							file {
+								url
+							}
+						}
+					}
+				`,
+				variables () {
+					return {
+						slug: this.$route.params.slug
+					}
+				},
+				result () {
+					this.fetchContent()
+					this.fetched = true
+				},
+				loadingKey: 'loading',
+			}
+		}
+	},
+
 	mounted () {
 		this.header = true
-		this.fetch()
 	},
 
 	beforeRouteLeave (to, from, next) {
 		this.header = false
-		this.meta = null
 		this.content = null
 
 		setTimeout(() => {
@@ -100,10 +127,15 @@ export default {
 	},
 
 	methods: {
-		fetch () {
-			this.loading = true
-		},
-		fetchContent (meta) {
+		fetchContent () {
+			return new Promise(resolve => {
+				this.$http.get(this.thought.file.url)
+					.then(response => {
+						setTimeout(() => {
+							this.content = response.data
+						}, 300)
+					})
+			})
 		},
 		format (date) {
 			return format(date, 'MMMM, Do YYYY')

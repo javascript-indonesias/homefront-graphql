@@ -81,6 +81,7 @@ export default {
 	data () {
 		return {
 			loading: 0,
+			temp: [],
 			thoughts: [],
 			header: false,
 			pagination: {
@@ -91,8 +92,21 @@ export default {
 	},
 
 	apollo: {
-		thoughts: {
-			query: thoughts,
+		temp: {
+			query: gql`
+				query {
+					temp: allPosts(orderBy: published_DESC) {
+						title
+						slug
+						published
+					}
+				}
+			`,
+			result () {
+				setTimeout(() => {
+					this.thoughts = this.temp
+				}, 300)
+			},
 			loadingKey: 'loading'
 		}
 	},
