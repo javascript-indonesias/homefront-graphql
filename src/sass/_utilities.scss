@@ -1,0 +1,25 @@
+
+// Visibilities
+.invisible { visibility: hidden; }
+
+// Heights
+.vh100 { height: 100vh; }
+.h100 { height: 100px; }
+
+// Font sizes
+.hxxl { font-size: 6rem; }
+.hxl { font-size: 5rem; }
+.hlg { font-size: 4rem; }
+
+// Backgrounds
+.bg-black { background-color: black; }
+.bg-white { background-color: white; }
+
+// Text colors
+.black { color: black; }
+
+// Shadows
+.sh-s { box-shadow: 0 0 15px 0 rgba(black, 0.1); }
+.sh-m { box-shadow: 0 0 25px 0 rgba(black, 0.1); }
+.sh-l { box-shadow: 0 0 35px 0 rgba(black, 0.1); }
+.sh-x { box-shadow: 0 0 15px 0 rgba(black, 0.1); }

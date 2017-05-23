@@ -1,0 +1,74 @@
+
+html {
+	font: normal 400 16px/1.5 $sans;
+	-webkit-font-smoothing: antialiased;
+
+	@include breakpoint('md') {
+		font-size: 18px;
+	}
+}
+
+h1, h2 { letter-spacing: -2px; }
+h3 { letter-spacing: -1px; }
+
+h1 { font-size: 4em; }
+h2 { font-size: 2.5em; }
+h3 { font-size: 2em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; }
+
+blockquote {
+	font: {
+		family: $serif;
+		size: 1.3em;
+	}
+	&::before {
+		font-size: 2em;
+	}
+}
+
+figcaption {
+	font-style: italic;
+}
+
+p {
+	line-height: 1.8;
+}
+
+a {
+	word-break: break-all;
+}
+
+input:not([type=checkbox]):not([type=radio]),
+select,
+button {
+	line-height: 1;
+}
+
+textarea {
+	line-height: 1.5;
+}
+
+input,
+select,
+button,
+textarea {
+	font-family: $sans;
+}
+
+button {
+	font-size: 0.7em;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+th {
+	text-transform: capitalize;
+}
+
+pre,
+code {
+	font-family: $mono;
+}

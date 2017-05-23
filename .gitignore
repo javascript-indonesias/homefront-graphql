@@ -1,0 +1,8 @@
+/node_modules
+/public/css
+/public/js
+/public/index.html
+/public/stats.json
+/public/hf-sw.js
+/.idea
+npm-debug.log

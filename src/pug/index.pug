@@ -1,0 +1,48 @@
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(name="theme-color", content="#000000")
+		meta(name="robots", content="index, follow")
+		meta(name="geo.placename", content="Indonesia")
+		meta(name="description", content="My name is Rizki Ardian. I develop websites and design user interfaces. Love travelling and photography.")
+		title
+		link(rel="icon", href="/favicon-16x16.png", type="image/png", sizes="16x16")
+		link(rel="icon", href="/favicon-32x32.png", type="image/png", sizes="32x32")
+		link(rel="icon", href="/favicon-96x96.png", type="image/png", sizes="96x96")
+		link(rel="apple-touch-icon", href="/older-iPhone.png")
+		link(rel="apple-touch-icon", href="/iPhone-6-Plus.png", sizes="180x180")
+		link(rel="apple-touch-icon", href="/iPad-Retina.png", sizes="152x152")
+		link(rel="apple-touch-icon", href="/iPad-Pro.png", sizes="167x167")
+		link(rel="manifest", href="/manifest.json")
+
+	body
+		#app
+
+		noscript
+			article
+				h3 Please enable javascript to view this page
+		script.
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
+			ga('create', 'UA-76229910-1', 'auto')
+			ga('send', 'pageview')
+		script.
+			(function() {
+				if('serviceWorker' in navigator) {
+					window.addEventListener('load', function () {
+						navigator.serviceWorker.register('/hf-sw.js')
+					})
+					window.addEventListener('online', updateOnlineStatus)
+					window.addEventListener('offline', updateOnlineStatus)
+					function updateOnlineStatus (e) {
+						if (app) {
+							if (navigator.onLine) app.$emit('online')
+							else app.$emit('offline')
+						}
+					}
+				}
+			})()

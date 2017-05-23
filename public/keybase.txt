@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/zardkin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://rizkiardian.com
+  * I am zardkin (https://keybase.io/zardkin) on keybase.
+  * I have a public key with fingerprint C355 908C CF70 1A89 D356  89E3 7F4B 7FEC A149 A9BA
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101ce651c66fb9e35e5342caf425d25141311d8d527b8593925a76cc8bb017daec00a",
+            "fingerprint": "c355908ccf701a89d35689e37f4b7feca149a9ba",
+            "host": "keybase.io",
+            "key_id": "7f4b7feca149a9ba",
+            "kid": "0101ce651c66fb9e35e5342caf425d25141311d8d527b8593925a76cc8bb017daec00a",
+            "uid": "b9c3439a279816ebb607cab608e6ac19",
+            "username": "zardkin"
+        },
+        "service": {
+            "hostname": "rizkiardian.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1490771268,
+    "expire_in": 157680000,
+    "prev": "e1c12f17ca655ced7b3b1db80dbff6e3e76a306a941bde782d78a2000d242d00",
+    "seqno": 12,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.66
+Comment: https://keybase.io/crypto
+
+yMIsAnicrZJbSBRRGMd3NbOkwi4oJlROaRe2mDOzc9t6iUIiupD4oJZt5zZ6Wndm
+m1k1E4NuDyVJF4OICoIsJJYIinrITDOyixVdMOshCnowQ+0uUtoZsbceOw/ncL7z
+///O9318HVOTfWn+mj1LGrcsGpX9D9tOVfqK3pSurhWQTWqEUK0QoWMHrSDUjYcj
+jAghQQQiwFRVAFZVExlUVqgiByUMzaCkEEkBQSADQHSiSBrSFUM2JAVqKsY6QiLQ
+CKRYFKEQEExmlVEn5jArzrFYVhRD1DE2NRFA3SCyouqcrplBpJkUQxA0oIE8Y7nt
+eg6eHIIuXcZsHuOX8Fh6/9D/57wrx3DIwHJQNqCkGTpQKUKqqGHId52qEAPDE7rU
+sWCUcvUu6JAIs4S6gMCDVQxTr69eIeMCh+2KMC5i0FqG7Sh3xxw7bmO7gj+Wx+Mx
+N+SZ4zUxT11NUXicE0bMIryT3FFFHZfZlhACXInjzAPzLoiaBiRVDwh0Z4w5NMw8
+haKpusiX9w+t4kgKMJBMwGtQFQVToiEZAYJ0kSDTVKlMNRXKogqNIECEarpENB1K
+nECkoEREUfAq22HZnC3xPGEZZ7qszILxSocKde23t0zw+dN8E1OSvBHzpU1O/zt4
+MztTR4tOpGR37Tvguzn3WWf38MWmgh555MVIW7irvedz5EoLO9h6uLm0msjfb8y5
+XD/zUvaSR8+/d5e8L8wf3dZ/vn3gbvEZWZp3srd++XBoVsv9Q7g6d8fC9gEj68ed
+e22tLf3NPx/kTZr/MbMr9e6mvhn3zu3rWbzz2zyzNCNz7ZPzC/rS76ROL/nVwfJT
+knNuCmdzOqMT934dfL0i5Zp27PrQms3hdF80aVF9cuJB62hot/VygG3I2uw/tj7t
+aEOD1Pt7sLHww7Bb8nyjfuFTQ2WuvGrr8Wlv9aHbeMr2W+fWZVSwue9WNhYk9iea
+NgSawaulbQn38ZfjT3uP1Mw+fTWv+GF/0sk/bq1HBQ==
+=yvV0
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/zardkin
+
+==================================================================

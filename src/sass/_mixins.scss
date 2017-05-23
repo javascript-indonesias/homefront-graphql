@@ -1,0 +1,14 @@
+
+@mixin breakpoint($width) {
+	@media screen and (min-width: #{map-get($breakpoints, $width)}) {
+		@content;
+	}
+}
+
+@mixin stretched {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}

@@ -1,0 +1,32 @@
+
+.fade {
+	&-enter-active,
+	&-leave-active {
+		transition: 0.3s;
+	}
+	&-enter,
+	&-leave-active {
+		opacity: 0;
+	}
+}
+
+.to-right {
+	&-enter-active,
+	&-leave-active {
+		transition: 0.2s;
+	}
+	&-enter,
+	&-leave-to {
+		opacity: 0;
+	}
+	&-enter-to,
+	&-leave {
+		opacity: 1;
+	}
+	&-enter {
+		transform: translateX(-1%);
+	}
+	&-leave-to {
+		transform: translateX(1%);
+	}
+}

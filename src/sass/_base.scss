@@ -1,0 +1,388 @@
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background-color: black;
+	color: white;
+	overflow-x: hidden;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+	overflow-x: hidden;
+}
+
+// blocks
+section {
+	padding-bottom: 1em;
+	padding-top: 1em;
+}
+
+article {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 42em;
+	padding: 1em;
+}
+
+p {
+	margin-bottom: 2em;
+	margin-top: 2em;
+	max-width: 42em;
+
+	blockquote & {
+		display: inline;
+	}
+}
+
+blockquote {
+	margin: 2em 0;
+	padding-left: 1.5em;
+	position: relative;
+	transition: 0.2s ease;
+	&::before {
+		content: "❝";
+		left: -0.05em;
+		margin-right: 0.6em;
+		opacity: 0.5;
+		position: absolute;
+		top: -0.5em;
+	}
+}
+
+ol,
+ul {
+	margin-left: 0;
+	padding-left: 2em;
+}
+
+table,
+tbody,
+tr,
+td {
+	display: block;
+}
+
+table {
+	border-spacing: 0;
+	margin: 1.4em 0;
+	max-width: 100%;
+	width: 100%;
+	@include breakpoint("md") {
+		display: table;
+	}
+}
+
+thead {
+	display: none;
+
+	@include breakpoint("md") {
+		display: table-header-group;
+	}
+}
+
+tbody {
+	@include breakpoint("md") {
+		display: table-row-group;
+	}
+}
+
+tr {
+	padding: 0.6em 0;
+	& + & {
+		border-top: 1px solid white;
+	}
+	@include breakpoint("md") {
+		display: table-row;
+	}
+}
+
+pre {
+	background-color: white;
+	color: black;
+	overflow-x: auto;
+	padding: 1em;
+}
+
+form {
+	margin: 1em 0;
+}
+
+fieldset {
+	border: 0;
+	margin: 1em 0;
+	padding: 0;
+}
+
+figure {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+figcaption {
+	text-align: center;
+}
+
+// inlines
+a {
+	border-bottom: 1px solid $green;
+	color: $green;
+	cursor: pointer;
+	outline: 0;
+	text-decoration: none;
+}
+
+q {
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+}
+
+code {
+	background-color: white;
+	color: black;
+	display: inline-block;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+}
+
+label {
+	cursor: pointer;
+}
+
+input:not([type=checkbox]):not([type=radio]):not([type=range]),
+textarea,
+select,
+button {
+	appearance: none;
+	border-radius: 2px;
+	box-sizing: border-box;
+	outline: 0;
+	padding: 0 0.65em;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+input:not([type=checkbox]):not([type=radio]):not([type=range]),
+select,
+button {
+	height: 36px;
+}
+
+input:not([type=range]),
+textarea,
+select {
+	border: 2px solid white;
+	min-width: 100%;
+	max-width: 100%;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	display: inline-block;
+	margin-right: 0.4em;
+	min-width: initial;
+	max-width: initial;
+	+ label {
+		display: inline-block;
+		font-weight: normal;
+	}
+}
+
+input[type=submit],
+input[type=reset],
+button {
+	cursor: pointer;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+	width: 100%;
+
+	&:focus {
+		outline: none;
+	}
+
+	&::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 4px;
+		cursor: pointer;
+		background: white;
+		border-radius: 20px;
+	}
+
+	&::-webkit-slider-thumb {
+		box-shadow: inset 0 0 0 3px black;
+		border: 2px solid white;
+		height: 16px;
+		width: 16px;
+		border-radius: 8px;
+		background: white;
+		cursor: pointer;
+		-webkit-appearance: none;
+		margin-top: -6px;
+	}
+
+	&:focus::-webkit-slider-runnable-track {
+		background: white;
+	}
+}
+
+input[type=range] {
+	&::-moz-range-track {
+		width: 100%;
+		height: 4px;
+		cursor: pointer;
+		background: white;
+		border-radius: 2px;
+	}
+
+	&::-moz-range-thumb {
+		border: 1px solid rgba(black, 0);
+		height: 15px;
+		width: 15px;
+		border-radius: 10px;
+		background: white;
+		cursor: pointer;
+	}
+}
+
+input[type=range] {
+	&::-ms-track {
+		width: 100%;
+		height: 4px;
+		cursor: pointer;
+		background: transparent;
+		border-color: transparent;
+		color: transparent;
+	}
+
+	&::-ms-thumb {
+		border: 1px solid rgba(black, 0);
+		height: 15px;
+		width: 15px;
+		border-radius: 10px;
+		background: white;
+		cursor: pointer;
+		height: 4px;
+	}
+
+	&::-ms-fill-upper,
+	&::-ms-fill-lower {
+		border-radius: 4px;
+	}
+
+	&::-ms-fill-upper {
+		background: white;
+	}
+
+	&::-ms-fill-lower {
+		background: #fafafa;
+	}
+
+	&:focus::-ms-fill-lower,
+	&:focus::-ms-fill-upper {
+		background: white;
+	}
+}
+
+textarea {
+	resize: none;
+	min-height: 8em;
+}
+
+select {
+	background-color: white;
+	background-image: linear-gradient(45deg, transparent 50%, black 50%),
+										linear-gradient(135deg, black 50%, transparent 50%);
+	background-size: 5px 5px;
+	background-position: calc(100% - 15px) 14px, calc(100% - 10px) 14px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+select:-moz-focusring {
+	color: transparent;
+	text-shadow: 0 0 0 white;
+}
+
+button {
+	background-color: $green;
+	color: black;
+	border: 0;
+	margin-bottom: 1em;
+	min-width: 5em;
+	position: relative;
+	user-select: none;
+	transition: 0.2s;
+
+	&:hover {
+		transform: translateY(0.1em);
+
+		&::before {
+			box-shadow: 0 0 10px 0 rgba($green, 0.5);
+		}
+	}
+
+	&:active {
+		transform: translateY(0.2em);
+	}
+
+	& + & {
+		margin-left: 0.8em;
+	}
+
+	&::before {
+		box-shadow: 0 2px 30px 0 rgba($green, 0.5);
+		content: '';
+		height: 80%;
+		left: 2%;
+		position: absolute;
+		top: 20%;
+		transition: 0.2s;
+		width: 96%;
+		z-index: -1;
+	}
+}
+
+th {
+	text-align: left;
+}
+
+td,
+th {
+	padding: 0.3em 0.6em;
+}
+
+td {
+	@include breakpoint("md") {
+		border-top: 1px solid white;
+		display: table-cell;
+	}
+}
+
+img {
+	max-width: 100%;
+	width: 100%;
+	p & {
+		width: initial;
+	}
+}
+
+mark {
+	background-color: white;
+	color: black;
+}
+
+// extras
+::selection {
+	background-color: rgba(255, 255, 255, 0.99);
+	color: black;
+}
+
+:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
