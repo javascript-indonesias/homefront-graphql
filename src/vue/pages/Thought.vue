@@ -106,7 +106,6 @@ export default {
 				},
 				result () {
 					this.fetchContent()
-					this.fetched = true
 				},
 				loadingKey: 'loading',
 			}
