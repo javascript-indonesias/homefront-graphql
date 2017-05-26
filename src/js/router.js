@@ -24,7 +24,7 @@ const router = new Router({
 })
 
 router.afterEach(to => {
-	makeTitle(to.name, 'Rizki Ardian')
+	makeTitle(to, 'Rizki Ardian')
 })
 
 export default router

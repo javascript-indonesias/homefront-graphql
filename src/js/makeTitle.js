@@ -1,10 +1,9 @@
-export default function (...parts) {
-	const tabTitle = document.getElementsByTagName('title')[0]
+import ucwords from './ucwords'
 
-	tabTitle.innerText = parts[0] === 'home' ?
-		parts[1] :
-		parts.map(part => part.split(' ')
-			.map(word => word.charAt(0).toUpperCase() + word.slice(1, word.length))
-			.join(' ')
-		).join(' | ')
+export default function (...parts) {
+	const tabTitle = document.querySelector('title')
+
+	tabTitle.innerText = parts[0].name === 'home' ? parts[1]
+		: parts[0].params.slug ? ucwords(parts[0].params.slug, '-', ' ') + ' | ' + parts[1]
+			: ucwords(parts[0].name, ' ', ' ') + ' | ' + parts[1]
 }
