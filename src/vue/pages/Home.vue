@@ -15,7 +15,6 @@ a {
 }
 
 .link {
-	background: black;
 	border: 0;
 	color: white;
 	display: inline-block;
@@ -246,11 +245,9 @@ export default {
 			return new Promise(resolve => {
 				this.$http.get('https://files.graph.cool/cj2zvv6fylilp0176gdzce8yx/cj30yfizz006n0156rk3xgc2u')
 					.then(response => {
-						setTimeout(() => {
-							this.greet = response.data
-							this.mounted = true
-							resolve()
-						}, 300)
+						this.greet = response.data
+						this.mounted = true
+						resolve()
 					})
 			})
 		},

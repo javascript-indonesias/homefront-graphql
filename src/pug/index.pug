@@ -45,9 +45,7 @@ html(lang="en")
 		script.
 			(function() {
 				if('serviceWorker' in navigator) {
-					window.addEventListener('load', function () {
-						navigator.serviceWorker.register('/hf-sw.js')
-					})
+					navigator.serviceWorker.register('/hf-sw.js')
 					window.addEventListener('online', updateOnlineStatus)
 					window.addEventListener('offline', updateOnlineStatus)
 					function updateOnlineStatus (e) {
