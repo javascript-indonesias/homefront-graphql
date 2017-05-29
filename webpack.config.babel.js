@@ -31,10 +31,10 @@ const SERVICE_WORKER = new SWPrecacheWebpackPlugin({
 	maximumFileSizeToCacheInBytes: 4194304,
 	minify: true,
 	staticFileGlobs: [
-		'public/index.html',
 		'public/css/**.css',
 		'public/js/**.js',
 		'public/favicon.ico',
+		'public/manifest.json',
 	],
 	stripPrefix: 'public/'
 })
