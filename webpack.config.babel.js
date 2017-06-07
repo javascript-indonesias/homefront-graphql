@@ -13,6 +13,7 @@ const VENDOR = new webpack.optimize.CommonsChunkPlugin({
 	name: 'vendor',
 	minChunks: module => module.context && module.context.indexOf('node_modules') !== -1 && module.request.indexOf('css') === -1
 })
+
 const MANIFEST = new webpack.optimize.CommonsChunkPlugin({ name: 'manifest' })
 const STATS_ANALYZER = new BundleAnalyzerPlugin({ generateStatsFile: true })
 const HTML = new HtmlWebpackPlugin({
@@ -25,6 +26,7 @@ const HTML = new HtmlWebpackPlugin({
   },
   xhtml: true
 })
+
 const SERVICE_WORKER = new SWPrecacheWebpackPlugin({
 	cacheId: 'hf',
 	filename: 'hf-sw.js',
@@ -81,7 +83,7 @@ const CONFIG = {
 	plugins: [
 		VENDOR,
 		MANIFEST,
-		HTML
+		HTML,
 	],
 	resolve: {
 		extensions: [ '.js', '.vue', '.scss', '.json' ],
