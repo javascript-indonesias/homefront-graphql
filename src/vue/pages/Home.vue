@@ -18,7 +18,6 @@ a {
 	border: 0;
 	color: white;
 	display: inline-block;
-	font-size: 1.2em;
 	padding: 0.5em 1em;
 	transition: 0.3s;
 
@@ -243,7 +242,7 @@ export default {
 	methods: {
 		fetch () {
 			return new Promise(resolve => {
-				this.$http.get('https://files.graph.cool/cj2zvv6fylilp0176gdzce8yx/cj30yfizz006n0156rk3xgc2u')
+				this.$http.get('https://files.graph.cool/cj2zvv6fylilp0176gdzce8yx/cj3qjf6po00dx016471psl70l')
 					.then(response => {
 						this.greet = response.data
 						this.mounted = true
